@@ -1,0 +1,23 @@
+name: 'local-run'
+description: 'Run workflow locally'
+inputs:
+  commands:
+    description: 'Commands to run workflow locally'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install Python dependencies
+      run: |
+        pip install --upgrade pip
+        pip install virtualenv
+      shell: bash
+
+    - name: Run workflow
+      run: ${{ inputs.commands }}
+      shell: bash
