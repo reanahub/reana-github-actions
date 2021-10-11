@@ -18,6 +18,17 @@ runs:
         pip install virtualenv
       shell: bash
 
+    - name: Create virtual environment
+      run: |
+        virtualenv ~/.virtualenvs/venv
+        source ~/.virtualenvs/venv/bin/activate
+      shell: bash
+
     - name: Run workflow
       run: ${{ inputs.commands }}
+      shell: bash
+
+    - name: Remove virtual environment
+      run: |
+        rm -rf ~/.virtualenvs/venv
       shell: bash
