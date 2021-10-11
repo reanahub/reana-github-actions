@@ -1,0 +1,26 @@
+name: 'local-validate'
+description: 'Validate workflow locally'
+inputs:
+  reana_specs:
+    description: 'REANA specification path to validate'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install Python dependencies
+      run: |
+        pip install --upgrade pip
+        pip install --pre reana-client
+      shell: bash
+
+    - name: Validate workflow
+      run: for file in ${{ inputs.reana_specs }}; do reana-client validate --environments -f $file; done
+      shell: bash
