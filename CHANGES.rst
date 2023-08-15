@@ -1,9 +1,9 @@
 Changes
 =======
 
-Version 1.0.1 (UNRELEASED)
+Version 1.0.1 (2023-08-16)
 --------------------------
-- Changes the ``local-validate`` and ``local-run`` actions to update the used sub-actions to the latest version.
+- Changes the ``local-validate`` and ``local-run`` actions to update the dependent Checkout and Python sub-actions to their latest versions.
 
 Version 1.0.0 (2021-10-11)
 --------------------------
