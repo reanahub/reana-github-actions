@@ -1,7 +1,7 @@
 Changes
 =======
 
-Version 1.1.1 (UNRELEASED)
+Version 1.1.1 (2023-12-06)
 --------------------------
 
 - Changes the ``release-docker`` action to disable provenance and SBOM attestations.
