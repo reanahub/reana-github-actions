@@ -106,5 +106,7 @@ runs:
         build-args: ${{ inputs.build-args }}
         context: ${{ inputs.component }}
         platforms: ${{ inputs.platform }}
+        provenance: false
         push: true
+        sbom: false
         tags: ${{ steps.docker-tags.outputs.tags }}
