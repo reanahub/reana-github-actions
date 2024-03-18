@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.2 (UNRELEASED)
+- Changes the `local-validate`, `local-run` and `release-docker` actions to update the sub-actions to their latest versions due to Node 16 deprecation.
+
 ## 1.1.1 (2023-12-06)
 
 - Changes the `release-docker` action to disable provenance and SBOM attestations.
