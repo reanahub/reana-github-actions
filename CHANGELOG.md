@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.2 (UNRELEASED)
+## 1.1.2 (2024-03-18)
 - Changes the `local-validate`, `local-run` and `release-docker` actions to update the sub-actions to their latest versions due to Node 16 deprecation.
 
 ## 1.1.1 (2023-12-06)
