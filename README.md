@@ -21,7 +21,7 @@ For example, to validate the `reana.yaml` file of a demo example, you can add th
 
 ```yaml
 validate:
-  runs-on: ubuntu-20.04
+  runs-on: ubuntu-24.04
   steps:
     - name: Checkout
       uses: actions/checkout@v3
