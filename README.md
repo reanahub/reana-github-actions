@@ -6,7 +6,8 @@
 
 ## About
 
-REANA-GitHub-Actions provides CI actions that can be used in multiple GitHub repositories.
+REANA-GitHub-Actions provides CI actions that can be used in multiple GitHub
+repositories.
 
 ## Features
 
@@ -16,8 +17,9 @@ REANA-GitHub-Actions provides CI actions that can be used in multiple GitHub rep
 
 ## Usage
 
-To use one of the actions, simply reference it from the YAML specification file of the CI workflow.
-For example, to validate the `reana.yaml` file of a demo example, you can add the following job to the workflow:
+To use one of the actions, simply reference it from the YAML specification file
+of the CI workflow. For example, to validate the `reana.yaml` file of a demo
+example, you can add the following job to the workflow:
 
 ```yaml
 validate:
@@ -32,7 +34,8 @@ validate:
         reana_specs: reana.yaml
 ```
 
-To find out which inputs are accepted by each action, please have a look at the corresponding `action.yml` file.
+To find out which inputs are accepted by each action, please have a look at the
+corresponding `action.yml` file.
 
 ## Useful links
 
