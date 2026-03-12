@@ -1,8 +1,8 @@
-name: 'local-validate'
-description: 'Validate workflow locally'
+name: "local-validate"
+description: "Validate workflow locally"
 inputs:
   reana_specs:
-    description: 'REANA specification path to validate'
+    description: "REANA specification path to validate"
     required: true
 runs:
   using: "composite"
@@ -22,5 +22,7 @@ runs:
       shell: bash
 
     - name: Validate workflow
-      run: for file in ${{ inputs.reana_specs }}; do reana-client validate --environments -f $file; done
+      run:
+        for file in ${{ inputs.reana_specs }}; do reana-client validate
+        --environments -f $file; done
       shell: bash

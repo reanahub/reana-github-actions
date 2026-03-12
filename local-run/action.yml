@@ -1,8 +1,8 @@
-name: 'local-run'
-description: 'Run workflow locally'
+name: "local-run"
+description: "Run workflow locally"
 inputs:
   commands:
-    description: 'Commands to run workflow locally'
+    description: "Commands to run workflow locally"
     required: true
 runs:
   using: "composite"
