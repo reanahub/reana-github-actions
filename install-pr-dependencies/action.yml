@@ -1,0 +1,24 @@
+name: "install-pr-dependencies"
+description:
+  "Install dependencies from pull requests listed as Depends-On in the PR body"
+runs:
+  using: "composite"
+  steps:
+    - name: Install Depends-On dependencies from related pull requests
+      env:
+        GH_TOKEN: ${{ github.token }}
+      shell: bash
+      run: |
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          pr_num="${{ github.event.pull_request.number }}"
+        else
+          pr_num=$(gh pr list --head "${{ github.ref_name }}" --json number -q '.[0].number' 2>/dev/null || true)
+        fi
+        [ -z "$pr_num" ] && exit 0
+        pr_body=$(gh pr view "$pr_num" --json body -q .body 2>/dev/null || true)
+        echo "$pr_body" | grep -oP '(?<=Depends-On: )\S+' | while read dep; do
+          repo=$(echo "$dep" | cut -d'#' -f1)
+          dep_pr_num=$(echo "$dep" | cut -d'#' -f2)
+          read -r branch head_repo < <(gh pr view "$dep_pr_num" --repo "$repo" --json headRefName,headRepository -q '[.headRefName, .headRepository.nameWithOwner] | @tsv')
+          pip install --force-reinstall --no-deps "git+https://github.com/${head_repo}.git@${branch}"
+        done
