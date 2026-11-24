@@ -4,6 +4,9 @@ inputs:
   reana_specs:
     description: "REANA specification path to validate"
     required: true
+  reana_specs_without_environments:
+    description: "REANA specification path to validate without environment checks"
+    required: false
 runs:
   using: "composite"
   steps:
@@ -22,7 +25,11 @@ runs:
       shell: bash
 
     - name: Validate workflow
-      run:
-        for file in ${{ inputs.reana_specs }}; do reana-client validate
-        --environments -f $file; done
+      run: |
+        for file in ${{ inputs.reana_specs }}; do
+          reana-client validate --environments -f $file
+        done
+        for file in ${{ inputs.reana_specs_without_environments }}; do
+          reana-client validate -f $file
+        done
       shell: bash
